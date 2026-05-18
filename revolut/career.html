@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stefaan Vuylsteke — Career</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --blue-dark: #336075;
+    --blue-mid: #4e87a3;
+    --blue-light: #79a7be;
+    --blue-light-15: rgba(121,167,190,0.15);
+    --blue-dark-bg: #2d5f74;
+    --text-dark: #1a2e38;
+    --text-mid: #445566;
+    --text-light: #7a9aaa;
+    --border: rgba(121,167,190,0.2);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #f7fafc; color: var(--text-dark); line-height: 1.6; }
+  header { background: var(--blue-dark-bg); color: white; padding: 2rem 0 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(51,96,117,0.3); }
+  .header-top { max-width: 960px; margin: 0 auto; padding: 0 2rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+  .header-name { font-family: 'DM Serif Display', serif; font-size: 1.4rem; }
+  .header-name span { font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--blue-light); display: block; margin-top: 2px; }
+  .header-actions { display: flex; gap: 1rem; align-items: center; }
+  .btn { font-size: 0.8rem; font-weight: 500; padding: 0.5rem 1.1rem; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
+  .btn-outline { border: 1px solid rgba(255,255,255,0.4); color: white; }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); }
+  .btn-solid { background: white; color: var(--blue-dark); }
+  .btn-solid:hover { background: var(--blue-light); color: white; }
+  nav { border-top: 1px solid rgba(255,255,255,0.1); }
+  .nav-inner { max-width: 960px; margin: 0 auto; padding: 0 2rem; display: flex; }
+  .nav-tab { font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.6); padding: 0.85rem 1.2rem; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; white-space: nowrap; }
+  .nav-tab:hover { color: white; }
+  .nav-tab.active { color: white; border-bottom-color: var(--blue-light); }
+  main { max-width: 960px; margin: 0 auto; padding: 3rem 2rem; }
+  .category { display: none; animation: fadeIn 0.3s ease; }
+  .category.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .category-header { margin-bottom: 2rem; }
+  .category-title { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--blue-dark); margin-bottom: 0.4rem; }
+  .category-desc { font-size: 0.9rem; color: var(--text-light); }
+  .job-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 1.75rem; margin-bottom: 1.25rem; box-shadow: 0 2px 12px rgba(51,96,117,0.06); }
+  .job-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+  .job-title { font-size: 1rem; font-weight: 600; color: var(--blue-dark); }
+  .job-company { font-size: 0.88rem; font-weight: 500; color: var(--text-mid); margin-top: 2px; }
+  .job-industry { font-size: 0.75rem; color: var(--text-light); margin-top: 2px; }
+  .job-meta { text-align: right; flex-shrink: 0; }
+  .job-period { font-size: 0.78rem; color: var(--blue-mid); font-weight: 500; }
+  .job-type { font-size: 0.72rem; color: var(--text-light); margin-top: 2px; }
+  .job-body { display: flex; flex-direction: column; gap: 1rem; }
+  .job-quote { font-style: italic; font-size: 0.88rem; color: var(--text-mid); border-left: 3px solid var(--blue-light); padding-left: 1rem; margin-bottom: 0.85rem; line-height: 1.7; }
+  .job-work { font-size: 0.83rem; color: var(--text-mid); line-height: 1.7; }
+  .job-work ul { padding-left: 1.1rem; margin-top: 0.4rem; }
+  .job-work li { margin-bottom: 4px; }
+  .job-work strong { color: var(--text-dark); }
+  .job-tools { margin-top: 0.75rem; font-size: 0.75rem; color: var(--text-light); }
+  .job-tools span { color: var(--blue-mid); font-weight: 500; }
+  .job-highlights { display: flex; flex-direction: row; flex-wrap: wrap; gap: 8px; margin-top: 0.5rem; }
+  .highlight { display: flex; align-items: flex-start; gap: 6px; font-size: 0.78rem; color: var(--text-mid); line-height: 1.4; background: var(--blue-light-15); border-radius: 6px; padding: 6px 8px; }
+  .highlight-icon { font-size: 0.75rem; flex-shrink: 0; margin-top: 1px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 0.75rem; }
+  .tag { font-size: 0.72rem; padding: 3px 9px; border-radius: 20px; background: var(--blue-light-15); color: var(--blue-dark); border: 1px solid var(--border); font-weight: 500; }
+  footer { background: var(--blue-dark-bg); color: white; padding: 2rem; margin-top: 4rem; }
+  .footer-inner { max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-left { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+  .footer-left strong { color: white; display: block; margin-bottom: 4px; font-family: 'DM Serif Display', serif; font-size: 1rem; }
+  .footer-links { display: flex; gap: 1rem; align-items: center; }
+  .footer-link { font-size: 0.82rem; color: var(--blue-light); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+  .footer-link:hover { color: white; }
+  .footer-sep { color: rgba(255,255,255,0.2); }
+  @media (max-width: 680px) {
+    .job-header { flex-direction: column; }
+    .job-meta { text-align: left; }
+    .nav-tab { padding: 0.75rem; font-size: 0.75rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="header-top">
+<div class="header-name">
+      Stefaan Vuylsteke
+      <span>Customer Lifecycle &amp; Engagement · Digital Service Design</span>
+</div>
+<div class="header-actions">
+<a class="btn btn-outline" href="https://stefaanvuylsteke.github.io/revolut/projects.html">Projects</a>
+<a class="btn btn-solid" download="" href="Profile_THD_2026_final_Revolut_CLM_Crypto.pdf">Download CV</a>
+</div>
+</div>
+<nav>
+<div class="nav-inner">
+<div class="nav-tab active" onclick="showCategory('startups')">Start-ups</div>
+<div class="nav-tab" onclick="showCategory('agencies')">Agencies</div>
+<div class="nav-tab" onclick="showCategory('corporates')">Corporates</div>
+</div>
+</nav>
+</header>
+<main>
+<!-- START-UPS -->
+<div class="category active" id="cat-startups">
+<div class="category-header">
+<div class="category-title">Start-ups</div>
+<div class="category-desc">Hands-on work in fast-moving environments. Broad tasks, real ownership and direct impact on product and growth.</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Senior Service Designer</div><div class="job-company">The Breath Club</div><div class="job-industry">Mental &amp; emotional health · Belgium</div></div>
+<div class="job-meta"><div class="job-period">2024 — 2 years</div><div class="job-type">Freelance</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"I'm designing and executing breathwork services and experiences combining science and technology."</div>
+<div class="job-work"><ul>
+<li><strong>Research:</strong> Interviews | Behavior analysis | Friction spotting | Health app analysis | Observation | Mind &amp; body study | Music impact | Behavior techniques</li>
+<li><strong>Ideation &amp; prototyping:</strong> Concept design of service elements | Mobile app | Test &amp; validate breath tracks &amp; programs | BM &amp; CVP canvas | AI driven coach</li>
+<li><strong>Marketing:</strong> Branding | Mission &amp; vision | Value proposition</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Figma · ChatGPT · WhatsApp · Canva</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>New health club concept</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Scalable business model</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Co-creation with field experts</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Behavioral Research &amp; Design Consultant</div><div class="job-company">Miss Mira AI</div><div class="job-industry">AI companion for elderly people · Belgium &amp; Hungary</div></div>
+<div class="job-meta"><div class="job-period">2023</div><div class="job-type">Freelance</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"Led research and steered ideation and prototyping."</div>
+<div class="job-work"><ul>
+<li><strong>Research:</strong> Competitor behavior analysis | Use-case listing | Behavior &amp; friction mapping | 4 Personas | 24 Interviews | Stakeholder mapping | Involved behavior experts | Observation</li>
+<li><strong>Synthesis &amp; ideation:</strong> 6 Priority cases | Ideation sorting | Design guidelines &amp; validation criteria | Clear insights into the mental &amp; emotional state | Insights on human, community &amp; regulation impact</li>
+</ul></div>
+<div class="tags"><span class="tag">Workshop facilitation</span><span class="tag">Behavior change</span><span class="tag">Design Thinking</span></div>
+<div class="job-tools">Tools: <span>Figma · ChatGPT</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>Sped up the design process</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Raised investor trust</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Actionable behavior insights</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Behavioral Research &amp; Design Consultant</div><div class="job-company">Maxis AI</div><div class="job-industry">AI-driven luxury travel concierge · Ibiza &amp; Switzerland</div></div>
+<div class="job-meta"><div class="job-period">2023</div><div class="job-type">Freelance</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"I solved user adoption and booking conversion problems of a travel concierge service on WhatsApp."</div>
+<div class="job-work"><ul>
+<li><strong>Research:</strong> Behavior diagnosis | Interviews | 15 Use-cases | Prototype testing | User journey &amp; friction detection | Outline behavior drivers &amp; techniques</li>
+<li><strong>Service improvement:</strong> Future state user journey map | User stories per travel product | Design conversations | Intervention plan | Integrate email</li>
+<li><strong>Marketing:</strong> Value proposition | Go-to-market | Demo &amp; contact flow</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Figma · WhatsApp · ChatGPT</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>−25% User dropouts</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+70% Booking conversion</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+50% Multiple bookings</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Behavioral Research &amp; Design Consultant</div><div class="job-company">Beyonder</div><div class="job-industry">Behavior design · Belgium</div></div>
+<div class="job-meta"><div class="job-period">2023</div><div class="job-type">Freelance</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-work">Behavioral research and design consulting applied to product and service challenges. Worked with Beyonder to apply behavioral science principles in a startup context focused on behavior change design.</div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>Behavioral research applied</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Design consulting</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Behavioral Research &amp; Service Consultant</div><div class="job-company">Men IT — Gevoelsthermometer</div><div class="job-industry">Digital solutions for mental care · Belgium &amp; NL</div></div>
+<div class="job-meta"><div class="job-period">2022</div><div class="job-type">Freelance</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"I solved problems in conversion and user adoption of the mobile &amp; web service."</div>
+<div class="job-work"><ul>
+<li><strong>Research:</strong> Stakeholder interviews | Patient &amp; care provider journey map | 4 Key personas | 8 Interviews</li>
+<li><strong>Marketing:</strong> Value proposition for 3 audiences | Revamp service offering | Redesign website</li>
+<li><strong>Adoption:</strong> Redesign registration &amp; onboarding | Adoption email flows | New notification features | A/B testing</li>
+<li><strong>Acquisition:</strong> Redesign trial subscription offering &amp; flow | Demo appointment flow</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Miro · Google Analytics · MailChimp</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>+350% Increase in active users</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>x4 Trial subscriptions</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+50% Trial/sales conversion</span></div>
+</div>
+</div>
+</div>
+</div>
+<!-- AGENCIES -->
+<div class="category" id="cat-agencies">
+<div class="category-header">
+<div class="category-title">Agencies</div>
+<div class="category-desc">Leading teams, advising brands and delivering digital engagement strategies across multiple clients and industries.</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">UX Research Consultant</div><div class="job-company">Jems Group (Beobank)</div><div class="job-industry">Data &amp; UX · Belgium</div></div>
+<div class="job-meta"><div class="job-period">2025</div><div class="job-type">Freelance</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"I led UX research for a car loan simulator, clarifying outcomes, reducing cognitive load, and aligning it with the real customer journey."</div>
+<div class="job-work"><ul>
+<li><strong>Prototype:</strong> Reviewed the prototype and defined protocols, tasks, and scenarios across target segments</li>
+<li><strong>Research:</strong> Managed participant comms, ran moderated interviews and task-based usability sessions</li>
+<li><strong>Behavioral insights:</strong> Identified emotional frictions (money-stress, trust, loss aversion), reduced cognitive load, applied choice architecture and clarified micro vs. target behaviors to drive completion and sustained use</li>
+<li><strong>Synthesis:</strong> Turned findings into prioritized insights; produced concept designs and copy tests (clarity, jargon removal, mental-model fit)</li>
+<li><strong>Journey integration:</strong> Designed end-to-end journey (pre/post-simulation stages, follow-ups, ownership, KPIs/timing) to align experience and operations</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Figma · AI for recording &amp; analysis</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>4 Core emotional frictions mapped</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>One-off → recurrent service</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Reduced steps from 5 to 3</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>−70% Mental friction</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Digital Strategist — Engagement &amp; Adoption</div><div class="job-company">Serviceplan Group</div><div class="job-industry">360° communication · Belgium</div></div>
+<div class="job-meta"><div class="job-period">2021 — 2 years</div><div class="job-type">Freelance</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"Led ALDI's CRM &amp; digital adoption; additionally supported other brands on adoption and lead-gen."</div>
+<div class="job-work"><ul>
+<li><strong>ALDI:</strong> Customer research | App adoption | Digital folder awareness | UX web audit | A/B testing | 15+ campaigns | +5 vertical newsletters | ALDI digital vision</li>
+<li><strong>Nespresso:</strong> Demand &amp; lead strategy | Campaign flows | Lead scoring modeling</li>
+<li><strong>BMW &amp; MINI:</strong> Electric Driving campaign | MINI Match web app</li>
+<li><strong>Shell:</strong> Loyalty activation campaign | Mobile app adoption</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Miro · Salesforce · Adobe Target · Adobe Analytics · Oracle</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>+25% ALDI opt-in</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+18% ALDI folder users</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Won Nespresso as new client</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+20% Shell app usage</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Strategy Director — Service Design &amp; Digital</div><div class="job-company">Springbok Agency</div><div class="job-industry">Full digital · Belgium &amp; NL</div></div>
+<div class="job-meta"><div class="job-period">2021 — 1 year</div><div class="job-type">Freelance</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"Stepped in during a sudden sick-leave gap; stabilized delivery, grew the team, and raised quality while executing."</div>
+<div class="job-work"><ul>
+<li><strong>Mercedes:</strong> UX redesign lead LPs | Repair shop lead campaign | Tyre lead campaign | Performance campaigns</li>
+<li><strong>Daikin:</strong> UX optimization of website and LPs | Conversion optimization of emails | Lead campaigns</li>
+<li><strong>Bridgestone:</strong> Branding Total Fleet Care | Lead acquisition program</li>
+<li><strong>Honda:</strong> Re-activate content platform | Rebranding</li>
+<li><strong>Reynaers:</strong> UX strategy website &amp; platforms | Functional analysis</li>
+<li><strong>Luxilon:</strong> Engagement strategy for young tennis players | Website redesign</li>
+<li><strong>Firestone:</strong> New concept music platform</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Figma · Selligent · Salesforce · Teamleader</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>Stabilized team churn</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Improved quality in SEM</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+20% Conversion Daikin</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Strategic win for Bridgestone</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Customer Experience &amp; Engagement Consultant</div><div class="job-company">Engagement Factory</div><div class="job-industry">Marketing Automation &amp; CX · NL (HQ) | BE | FR | UK | DE | SE</div></div>
+<div class="job-meta"><div class="job-period">2016 — 3.5 years</div><div class="job-type">Employee</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"I enabled marketing, sales and digital teams across Europe to leverage marketing automation and foster a true CX culture."</div>
+<div class="job-work"><ul>
+<li><strong>Marketing automation:</strong> Implemented platforms, integrated with CRM, and trained teams for 10+ corporates including Proximus, Philips, Thales</li>
+<li><strong>CX research &amp; strategy:</strong> Interviews, journey/service maps → roadmap for Veolia, Brenntag, Philips, ONVZ, Ricoh, Boon Edam, Omron</li>
+<li><strong>Lead frameworks &amp; campaigns:</strong> Lifecycle, scoring, SLAs; always-on and segmented campaigns for Ricoh, Samsung, Wienerberger, Essent, Boon Edam, Zetes</li>
+<li><strong>Adoption campaigns:</strong> Segmentation, trigger-based journeys, progressive onboarding, email/SMS, re-engagement reminders, milestone rewards (Primagaz, Brenntag, Philips Healthcare, SSE, Essent, Boon Edam, Athlon, CZ)</li>
+<li><strong>Event digitization:</strong> Registration, on-site engagement, follow-up journeys (Thales, Euroforum, McLaren, Athlon)</li>
+<li><strong>Mobile &amp; web apps:</strong> From ideation, design to adoption (Modern Marketing Coach, McLaren Experience, Samsung Experience, ONVZ Vitality Scan)</li>
+<li><strong>Optimization:</strong> Mobile apps (McLaren, ONVZ) | Email (Philips, Athlon, CZ)</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Miro · Marketo · Eloqua · Tableau · Responsys · HubSpot · Salesforce</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>Trained 140+ marketers</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+40 Workshop facilitations</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>12 New clients won</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>€850K business generated</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>3 Rewarded lead campaigns</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>New MA maturity model</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">CRM &amp; Marketing Automation Team Lead</div><div class="job-company">Emakina Group</div><div class="job-industry">Full digital · Belgium | NL | France</div></div>
+<div class="job-meta"><div class="job-period">2014 — 1 year</div><div class="job-type">Employee</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"I've led a team, fostered strong client relationships, secured new business opportunities, and delivered impactful strategic services."</div>
+<div class="job-work"><ul>
+<li><strong>Customer loyalty:</strong> MySamsung platform | Air Canada Miles | Auping Ambassador</li>
+<li><strong>Lead campaigns:</strong> 85+ email campaigns for Skoda, Audi &amp; Seat | Full digital Auto Salon campaign | Leadscoring model (Skoda) | Taxonomy model (Audi)</li>
+<li><strong>CLC programs:</strong> Credit Foncier onboarding | TomTom product registration | MySamsung onboarding | Customer Dialogue programs for Audi &amp; Skoda</li>
+<li><strong>Conversion &amp; optimization:</strong> Redesign Mynewaudi | 10+ email templates | Dynamic e-newsletters | A/B email testing</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Adobe Analytics · Selligent · Salesforce · Asana</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>€500K revenue</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>2 Nominated lead campaigns</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>New CLC programs</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Advanced lead scoring</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">CRM &amp; Marketing Automation Team Lead</div><div class="job-company">Serviceplan Group</div><div class="job-industry">360° communication · Belgium &amp; NL</div></div>
+<div class="job-meta"><div class="job-period">2013 — 1 year</div><div class="job-type">Employee</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"I've built and led a high-performing CRM team, successfully expanding the CRM business."</div>
+<div class="job-work"><ul>
+<li><strong>Customer loyalty:</strong> Loyalty program for Exki | Touring | Magazine, e-newsletters &amp; local events for BMW</li>
+<li><strong>Lead campaigns:</strong> BMW new car models | BMW Auto Salon | Dynamic e-newsletters (ICI Paris XL) | Thomas Cook Airlines automated deals &amp; upsell</li>
+<li><strong>Digitalization:</strong> BMW event platform | BMW dealer platform | BMW dealer CRM &amp; Marketing Automation</li>
+<li><strong>CLC programs:</strong> Thomas Cook Airlines | BMW Financial Services</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Salesforce · Selligent · Campaign Manager · Addemar</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>Built out a CRM team</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>x4 MA &amp; CRM projects</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Boosted quality in digital &amp; print</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Digital &amp; CRM collaboration</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">CRM &amp; Marketing Automation Account Manager</div><div class="job-company">J. Walter Thompson</div><div class="job-industry">Full communication · Belgium</div></div>
+<div class="job-meta"><div class="job-period">2012 — 1 year</div><div class="job-type">Employee</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"Driven to create impactful marketing automation campaigns, I started in a small digital agency serving clients like D'Ieteren."</div>
+<div class="job-work"><ul>
+<li><strong>Customer Life Cycle:</strong> 3 Customer dialogue programs for Audi, Skoda, VW &amp; Seat</li>
+<li><strong>Data &amp; CRM:</strong> Data clean-up &amp; modeling (Audi) | Lead scoring dashboard (Skoda) | CRM strategy (Beobank)</li>
+<li><strong>Lead campaigns:</strong> 140+ lead campaigns | Microsites for specific car models | Lead-funnel reporting | E-newsletters</li>
+<li><strong>Digitalization:</strong> Dealer platform (Skoda, Audi &amp; VW) | Fleet manager platform (VW)</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Selligent · Salesforce · Google Analytics</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>+180% Revenue boost</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Lead-funnel reporting</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Advanced dynamic emails</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+3 CLC programs for 4 brands</span></div>
+</div>
+</div>
+</div>
+</div>
+<!-- CORPORATES -->
+<div class="category" id="cat-corporates">
+<div class="category-header">
+<div class="category-title">Corporates</div>
+<div class="category-desc">Strategic and operational roles within large organizations, driving digital transformation, customer engagement and marketing innovation.</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Business &amp; Service Designer</div><div class="job-company">Proximus</div><div class="job-industry">Telecom · Belgium</div></div>
+<div class="job-meta"><div class="job-period">2024</div><div class="job-type">Freelance</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"I did service improvement &amp; innovation in the RES Mobile Squad, initiated the RES value project and coached service designers."</div>
+<div class="job-work"><ul>
+<li><strong>Research:</strong> Market analysis | Competitive research | Test &amp; validate new offerings | Mobile friction mapping</li>
+<li><strong>Service innovation:</strong> Mobile evolution design sprints | New international &amp; roaming offering | Forward trade-in service | Security offering</li>
+<li><strong>Behavior design:</strong> Customer paying service | Roaming service | Wifi booster</li>
+<li><strong>Training:</strong> CVP Canvas | Behavior design | Responsible design</li>
+<li><strong>Service improvement:</strong> Roaming service: value redesign, new notification messaging &amp; improved activation | Joint offer service | 2 revamps of mobile subscription plans | Revamp of data options | Mobile post-onboarding flow</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Figma · Qualtrics · MicroStrategy · Adobe Analytics · ChatGPT</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>2 Revamps of mobile plans</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>6 Design sprints mobile evolution</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>2 New mobile offerings</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Mobile growth above forecast</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Redesign of key webpages</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Customer Experience &amp; Engagement Consultant</div><div class="job-company">Arcadis</div><div class="job-industry">Sustainability solutions · Belgium</div></div>
+<div class="job-meta"><div class="job-period">2021</div><div class="job-type">Freelance</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"I helped marketing &amp; sales to boost authority and demand generation in vertical markets."</div>
+<div class="job-work"><ul>
+<li><strong>Research:</strong> 6 Personas | 2 Stakeholder maps | 35 Interviews | Customer journey mapping | Competitive research</li>
+<li><strong>Content:</strong> Content audit &amp; research | Content framework | Expert content platform &amp; automated email flows</li>
+<li><strong>Strategy:</strong> Buyer &amp; customer journey flow | Channel plan | Campaign strategy per vertical | Opt-in tactics | Data enrichment</li>
+<li><strong>Campaigns:</strong> Demand &amp; lead framework | 5 Demand &amp; lead campaign flows | Vertical content email flows</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Miro · Oracle Eloqua · Salesforce · SurveyMonkey</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>5 Demand generation campaigns</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>4 Always-on profile campaigns</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Re-allocation of budget</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Belgium as lead CX country</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Customer Experience &amp; Engagement Consultant</div><div class="job-company">SCIA</div><div class="job-industry">SaaS for civil engineering · BE | NL | FR | ES | DE | UK</div></div>
+<div class="job-meta"><div class="job-period">2021</div><div class="job-type">Freelance</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"I helped marketing to boost acquisition in emerging EU markets and enhance loyalty in mature ones."</div>
+<div class="job-work"><ul>
+<li><strong>Research:</strong> Full customer involvement map | 2 Personas | 40 Interviews in 6 countries | 4 Co-creative workshops</li>
+<li><strong>Content:</strong> Buyer &amp; customer journey | Content audit | Smart Engineering programme | E-newsletters</li>
+<li><strong>Acquisition:</strong> Demand &amp; lead framework | Smart Engineering Campaign flow | Lead gen. &amp; nurture flows</li>
+<li><strong>Onboarding &amp; adoption:</strong> Onboarding flow | First successful project adoption program | User ambassador program | CLC campaigns</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Miro · Marketo · Smaply · Qualtrics</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>+60% Quality demo leads</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>−35% Demo dropout</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>New content authority program</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>8 Campaigns across EU</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Customer Experience &amp; Lifecycle Consultant</div><div class="job-company">DPG Media</div><div class="job-industry">Newspapers &amp; magazines · Belgium &amp; NL</div></div>
+<div class="job-meta"><div class="job-period">2020 — 1 year</div><div class="job-type">Freelance</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"I redesigned the trial subscription service and implemented acquisition &amp; upsell tactics for paid subscriptions."</div>
+<div class="job-work"><ul>
+<li><strong>Trial subscription:</strong> New service &amp; pricing offering | Journey mapping | Multichannel campaigns | Predictive data modeling | New digital assets for 11 brands</li>
+<li><strong>Lead campaigns:</strong> 45+ lead &amp; promotion campaigns | 65 Always-on upsell &amp; cross-sell campaigns</li>
+<li><strong>Retention:</strong> Automated multichannel onboarding flows | Subscription renewal campaigns</li>
+<li><strong>Optimization:</strong> New email templates | A/B testing on subscription &amp; sign-up pages | In-app sales testing</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Selligent · Salesforce · Google Analytics · Optimizely · Zendesk</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>+50% Email opt-ins</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>−15% Subscription churn</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+30% Upsell subscriptions</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>150 Automated emails</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Predictive modeling</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Business &amp; Service Designer</div><div class="job-company">Telenet Business</div><div class="job-industry">Telecom &amp; technology · Belgium</div></div>
+<div class="job-meta"><div class="job-period">2019 — 1 year</div><div class="job-type">Freelance</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"I managed a portfolio of services and helped colleagues with research, workshop facilitation &amp; design thinking training."</div>
+<div class="job-work"><ul>
+<li><strong>Business TV:</strong> Solved sales &amp; delivery problems | Service blueprint | New offering | Transition campaign</li>
+<li><strong>Office 365:</strong> Qualitative research | Redesign subscription offering &amp; value proposition | Acquisition &amp; cross-selling campaigns | New adoption service</li>
+<li><strong>Cybersecurity:</strong> Qualitative research | Concept design service offering | Customer journey mapping | Service blueprint</li>
+<li><strong>Mobile:</strong> Qualitative research | Design service offering | Customer journey mapping | Service blueprint | Business modeling</li>
+<li><strong>Training:</strong> Design thinking framework | Workshops CVP &amp; BM canvas</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Miro · Smaply · Marketo · Strategyzer</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>−20% Churn Office 365</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+30% Acquisition Office 365</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>3 Redesign offerings</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>New adoption service</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Marketing Director</div><div class="job-company">Wolters Kluwer</div><div class="job-industry">Information &amp; software solutions · Belgium (EU &amp; US market)</div></div>
+<div class="job-meta"><div class="job-period">2015 — 2 years</div><div class="job-type">Employee</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"I transformed the global marketing team into a digital lead generation and content engine serving all markets, in close collaboration with product and sales."</div>
+<div class="job-work"><ul>
+<li><strong>Transformation:</strong> Process &amp; quality management | Test &amp; optimize culture | 300+ email campaigns in 15 countries | Rebranding | 6 New websites</li>
+<li><strong>Data &amp; Content:</strong> CRM &amp; Marketing Automation integration | Data modeling | Lead scoring &amp; reporting | EU content hub with local experts</li>
+<li><strong>Transwide:</strong> Qualitative research | Journey mapping | Redesign CVP | Vertical lead campaigns</li>
+<li><strong>FreightCentral:</strong> Innovation | Journey mapping | Design CVP | Go-to-market | Demo lead tool</li>
+<li><strong>Digital:</strong> Customer ambassador program | Automated customer onboarding | Digital sales &amp; service interactions | Digital event management</li>
+<li><strong>Teleroute:</strong> Multichannel &amp; -country campaigns | Redesign lead tools | Personalised notification system | Always-on campaigns</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Selligent · Salesforce · Google Analytics · Yadera</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>+85% ROMI</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+35% Transactions Teleroute</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+250% Qualified leads</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+40% Upselling Transwide</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Innovation Manager</div><div class="job-company">Amadeus</div><div class="job-industry">Travel technology solutions · Benelux | Nice &amp; Madrid (HQ)</div></div>
+<div class="job-meta"><div class="job-period">2011 — 1 year</div><div class="job-type">Employee</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"For the first time innovation was driven from the local countries. I was responsible for leisure &amp; tour operating."</div>
+<div class="job-work"><ul>
+<li><strong>Research:</strong> 40+ customer interviews | 20+ stakeholder interviews | 40+ traveler interviews | Focus groups | Market &amp; trends analysis | Leisure travel journey</li>
+<li><strong>Ideation &amp; testing:</strong> Ideation listing | Concept designs | Co-creative workshops | Multi model &amp; cross-check validation</li>
+<li><strong>Business &amp; marketing:</strong> BM canvas | Cost &amp; revenue calculations | Business case | Collaboration with product, finance &amp; sales | Value proposition | Partnership screening &amp; selection</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Selligent · Salesforce · Google Analytics · Optimizely</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>15 Validated business ideas</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>2 New concepts — 1 approved</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Key insights for product &amp; sales</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Customer Segment Manager</div><div class="job-company">Amadeus</div><div class="job-industry">Travel technology solutions · Benelux | Nice &amp; Madrid (HQ)</div></div>
+<div class="job-meta"><div class="job-period">2008 — 3 years</div><div class="job-type">Employee</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"As a member of the WEMEA Customer Excellence Program, I had a matrix-driven role interacting with product, sales &amp; marketing to help with their targets on both local &amp; global level."</div>
+<div class="job-work"><ul>
+<li><strong>Customer research:</strong> Customer knowledge base | Customer voice program | Segment focus groups | Travel trends | Customer insights newsletter</li>
+<li><strong>Customer strategy:</strong> 7 Segment plans &amp; CVP | Define &amp; execute campaigns per segment | Sales &amp; marketing collaboration | User interaction program</li>
+<li><strong>Customer data &amp; technology:</strong> Clean up database | Pilot CRM &amp; marketing automation | Training CRM | Lead routing | Data profiling | Opt-in tactics</li>
+<li><strong>Awareness &amp; adoption:</strong> Hotel adoption program | Rail activation program | Joint partnerships with travel providers | Onboarding campaigns | Product reactivation campaigns</li>
+<li><strong>Acquisition:</strong> 3 SSTA acquisition campaigns | Air VAS campaign | New business travel app | Consolidator program</li>
+<li><strong>Loyalty &amp; retention:</strong> Key account plan | Multi Air GDS Program | Customer voice program | Amadeus Connect Program</li>
+<li><strong>Customer data &amp; technology:</strong> Clean up database | Pilot CRM &amp; marketing automation | Training CRM | Lead routing | Data profiling | Opt-in tactics</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Siebel · Oracle · Campaigner · Adobe Analytics · Umbraco</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>3 Rewarded campaigns</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>150+ M&amp;S campaigns</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>3 Adoption programs</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+40% Budget growth</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+5% Revenue year on year</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Marketing &amp; Product Manager</div><div class="job-company">TNT Group</div><div class="job-industry">Courier delivery services · Belgium &amp; Amsterdam</div></div>
+<div class="job-meta"><div class="job-period">2006 — 2 years</div><div class="job-type">Employee</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"I successfully increased revenues through service innovation, digital marketing, and close sales collaboration, all within a tight budget."</div>
+<div class="job-work"><ul>
+<li><strong>Service innovation:</strong> 5 B2B services | 2 C2B services | Pay&amp;Deliver C2C service</li>
+<li><strong>Service improvement:</strong> Expanded Post Shop network from 100 to 250 | New track &amp; trace system</li>
+<li><strong>Partnerships:</strong> AMP | Staples | 2dehands | eBay</li>
+<li><strong>Acquisition B2B:</strong> Geo-targeted email &amp; mail acquisition campaigns | Trade fair events | Digital lead campaigns SEM</li>
+<li><strong>Awareness &amp; acquisition C2C:</strong> In-house and outsourced communication | Media plan | Email campaigns | SEM</li>
+<li><strong>Communication:</strong> Corporate (PR) | B2B &amp; B2C website | Rebranding</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Salesforce · Google Analytics · Email Campaigner · Sitecore</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>+150 Post Shops</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+90% Revenue Post Shops</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>New C2C service</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>5 New B2B/C2B services</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Retail Marketing Manager</div><div class="job-company">Princess Home</div><div class="job-industry">Small household appliances · Belgium &amp; Breda</div></div>
+<div class="job-meta"><div class="job-period">2005 — 1 year</div><div class="job-type">Employee</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"In this new local marketing role, I collaborated closely with sales and key accounts to enhance visibility and drive sales growth."</div>
+<div class="job-work"><ul>
+<li><strong>Sales promotions:</strong> Trade marketing actions &amp; campaigns with key retailers | Cash back &amp; joint product tactics</li>
+<li><strong>Product launches:</strong> Cross media campaigns for new products (Starck line, Table Chef and Retro line) | Localisation of product packaging</li>
+<li><strong>Digital communication:</strong> 2 New brand websites | 3 Campaign microsites | Retail communication platform 2.0</li>
+<li><strong>Event marketing:</strong> Trade shows | Own customer events | Joint events</li>
+</ul></div>
+<div class="job-tools">Tools: <span>Tridion · Google Analytics</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>3 Brand websites &amp; microsites</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>4 Local activation campaigns</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>Boost visibility in key retailers</span></div>
+</div>
+</div>
+</div>
+<div class="job-card">
+<div class="job-header">
+<div><div class="job-title">Customer Segment &amp; CRM Manager</div><div class="job-company">Blending International</div><div class="job-industry">Enterprise software · Belgium | Luxembourg | NL</div></div>
+<div class="job-meta"><div class="job-period">2003 — 3 years</div><div class="job-type">Employee</div></div>
+</div>
+<div class="job-body">
+
+<div class="job-quote">"Following the merger of two companies, I rebuilt marketing and lead generation strategies from the ground up to successfully fill the sales pipeline."</div>
+<div class="job-work"><ul>
+<li><strong>Marketing &amp; Sales:</strong> Market segmentation | Customer value propositions per segment | Branding | Sales stories | Sales funnel</li>
+<li><strong>Lead:</strong> Lead-funnel creation | Marketing &amp; sales process | Targeted DM &amp; media campaigns | Strategic partnerships</li>
+<li><strong>CRM:</strong> Selection of the CRM tool | Implementation guidance | Administrator | Training Sales | Data clean-up</li>
+<li><strong>Data:</strong> Data clean-up &amp; quality management | Data broker management</li>
+</ul></div>
+<div class="job-tools">Tools: <span>SuperOffice</span></div>
+<div class="job-highlights">
+<div class="highlight"><span class="highlight-icon">👍</span><span>CRM implementation</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>New branding</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+60% Sales pipeline</span></div>
+<div class="highlight"><span class="highlight-icon">👍</span><span>+10 New deals won</span></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer>
+<div class="footer-inner">
+<div class="footer-left">
+<strong>Stefaan Vuylsteke</strong>
+      +32 484 48 05 24 · stefaan@growthup.eu
+    </div>
+<div class="footer-links">
+<a class="footer-link" href="https://stefaanvuylsteke.github.io/revolut/projects.html">Projects</a>
+<span class="footer-sep">·</span>
+<a class="footer-link" download="" href="Profile_THD_2026_final_Revolut_CLM_Crypto.pdf">Download CV</a>
+<span class="footer-sep">·</span>
+<a class="footer-link" href="https://linkedin.com/in/stefaanvuylsteke">LinkedIn</a>
+</div>
+</div>
+</footer>
+<script>
+  function showCategory(id) {
+    document.querySelectorAll('.category').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+    document.getElementById('cat-' + id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
