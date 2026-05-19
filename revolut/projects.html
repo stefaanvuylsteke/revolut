@@ -364,6 +364,79 @@
     .supporting { grid-template-columns: 1fr; }
     .nav-tab { padding: 0.75rem 0.75rem; font-size: 0.75rem; }
   }
+  /* Responsive header fix */
+.nav-inner {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-inner::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .header-top {
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .header-name {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .header-actions {
+    flex-shrink: 0;
+    gap: 0.6rem;
+  }
+
+  .btn {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 680px) {
+  header {
+    padding-top: 1.5rem;
+  }
+
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 1.25rem 1.25rem;
+    gap: 1rem;
+  }
+
+  .header-name {
+    width: 100%;
+    font-size: 1.35rem;
+  }
+
+  .header-name span {
+    font-size: 0.8rem;
+    max-width: 100%;
+  }
+
+  .header-actions {
+    width: 100%;
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .header-actions .btn {
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .nav-inner {
+    padding: 0 1.25rem;
+  }
+}
 </style>
 </head>
 <body>
@@ -381,10 +454,10 @@
   </div>
   <nav>
     <div class="nav-inner">
-      <div class="nav-tab active" onclick="showCategory('lead')">Lead Generation & Selling</div>
-      <div class="nav-tab" onclick="showCategory('onboarding')">Onboarding & Education</div>
-      <div class="nav-tab" onclick="showCategory('retention')">Reactivation & Retention</div>
-      <div class="nav-tab" onclick="showCategory('cx')">Customer Innovation</div>
+      <div class="nav-tab active" onclick="showCategory('lead', this)">Lead Generation & Selling</div>
+<div class="nav-tab" onclick="showCategory('onboarding', this)">Onboarding & Education</div>
+<div class="nav-tab" onclick="showCategory('retention', this)">Reactivation & Retention</div>
+<div class="nav-tab" onclick="showCategory('cx', this)">Customer Innovation</div>
     </div>
   </nav>
 </header>
@@ -679,11 +752,11 @@
 </footer>
 
 <script>
-  function showCategory(id) {
+  function showCategory(id, tab) {
     document.querySelectorAll('.category').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
     document.getElementById('cat-' + id).classList.add('active');
-    event.target.classList.add('active');
+    tab.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 </script>
